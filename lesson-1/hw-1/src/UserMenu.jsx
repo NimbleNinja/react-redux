@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { userContext } from './user-context';
 
 class UserMenu extends Component {
-  static contextType = userContext;
-
   render() {
     return (
       <div className="menu">
@@ -13,5 +11,6 @@ class UserMenu extends Component {
     );
   }
 }
+UserMenu.contextType = userContext;
 
 export default UserMenu;
