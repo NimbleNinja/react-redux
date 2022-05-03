@@ -1,7 +1,7 @@
 import { ADD_USER, DELETE_USER, UPDATE_USER } from './users.actions';
 
 const initualState = {
-  users: [],
+  usersList: [],
 };
 
 const usersReducer = (state = initualState, action) => {
@@ -11,17 +11,17 @@ const usersReducer = (state = initualState, action) => {
     case ADD_USER:
       return {
         ...state,
-        users: [...state.users, action.payload.userData],
+        usersList: [...state.usersList, action.payload.userData],
       };
     case DELETE_USER: {
-      const filteredUsers = state.users.filter(user => user.id !== action.payload.userId);
+      const filteredUsers = state.usersList.filter(user => user.id !== action.payload.userId);
       return {
         ...state,
-        users: filteredUsers,
+        usersList: filteredUsers,
       };
     }
     case UPDATE_USER: {
-      const updatedUsers = state.users.map(user => {
+      const updatedUsers = state.usersList.map(user => {
         if (user.id === action.payload.userId) {
           return {
             ...user,
@@ -33,7 +33,7 @@ const usersReducer = (state = initualState, action) => {
 
       return {
         ...state,
-        users: updatedUsers,
+        usersList: updatedUsers,
       };
     }
   }
