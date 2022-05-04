@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from './counter.reducer';
 
-class Counter extends Component {
-  render() {
-    return (
-      <div className="counter">
-        <button className="counter__button">-</button>
-        <span className="counter__value">17</span>
-        <button className="counter__button">+</button>
-      </div>
-    );
-  }
-}
+const Counter = () => {
+  const count = useSelector(state => state.counter.value);
+  const dispatch = useDispatch();
+
+  return (
+    <div className="counter">
+      <button onClick={() => dispatch(decrement())} className="counter__button">
+        -
+      </button>
+      <span className="counter__value">{count}</span>
+      <button onClick={() => dispatch(increment())} className="counter__button">
+        +
+      </button>
+    </div>
+  );
+};
 
 export default Counter;
