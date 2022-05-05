@@ -1,5 +1,13 @@
-export const availableOptionsSelector = state =>
-  state.options.optionsList.filter(option => !state.options.selected.includes(option.id));
+import { createSelector } from 'reselect';
 
-export const selectedOptionsSelector = state =>
-  state.options.optionsList.filter(option => state.options.selected.includes(option.id));
+export const optionsListSelector = state => state.options.optionsList;
+export const selectedIdsSelector = state => state.options.selected;
+
+export const availableOptionsSelector = createSelector(
+  [optionsListSelector, selectedIdsSelector],
+  (options, selectedIds) => options.filter(option => !selectedIds.includes(option.id)),
+);
+export const selectedOptionsSelector = createSelector(
+  [optionsListSelector, selectedIdsSelector],
+  (options, selectedIds) => options.filter(option => selectedIds.includes(option.id)),
+);
