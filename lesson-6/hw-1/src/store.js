@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import weatherReducer from './weather/weather.reducer';
 
 const reducer = combineReducers({
-  towns: weatherReducer,
+  weather: weatherReducer,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk));

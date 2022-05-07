@@ -1,3 +1,3 @@
-const weatherDataSelector = state => state.towns;
+const weatherDataSelector = state => state.weather;
 
 export default weatherDataSelector;

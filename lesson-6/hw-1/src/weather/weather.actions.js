@@ -9,9 +9,8 @@ export const setTowns = towns => ({
   },
 });
 
-export const getWeatherData = () =>
-  function () {
-    fetchWeatherData().then(towns => {
-      setTowns(towns);
-    });
-  };
+export const getWeatherData = () => dispatch => {
+  fetchWeatherData().then(towns => {
+    dispatch(setTowns(towns));
+  });
+};
