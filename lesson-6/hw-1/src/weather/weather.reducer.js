@@ -1,13 +1,16 @@
-import { SET_TOWNS } from './weather.actions';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import fetchWeatherData from './gateway';
 
-const weatherReducer = (state = [], action) => {
-  switch (action.type) {
-    case SET_TOWNS:
-      return [...state, ...action.payload.towns];
+const SET_TOWNS = 'WEATHER/SET_TOWNS';
 
-    default:
-      return state;
-  }
-};
+export const getWeatherData = createAsyncThunk(SET_TOWNS, () => fetchWeatherData());
 
-export default weatherReducer;
+const weatherSlice = createSlice({
+  name: 'weather',
+  initialState: [],
+  extraReducers(builder) {
+    builder.addCase(getWeatherData.fulfilled, (state, action) => [...state, ...action.payload]);
+  },
+});
+
+export default weatherSlice.reducer;
