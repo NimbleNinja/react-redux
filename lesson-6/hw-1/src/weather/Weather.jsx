@@ -9,28 +9,19 @@ class Weather extends Component {
   }
 
   render() {
+    const { towns } = this.props;
     return (
       <main className="weather">
         <h1 className="weather__title">Weather data</h1>
         <ul className="cities-list">
-          {this.props.towns.map(({ id, name, temperature }) => (
-            <li key={id} className="city">
-              <span className="city__name">{name}</span>
-              <span className="city__temperature">{`${temperature} F`}</span>
-            </li>
-          ))}
-          <li className="city">
-            <span className="city__name">Lake Hilmaside</span>
-            <span className="city__temperature">78 F</span>
-          </li>
-          <li className="city">
-            <span className="city__name">Lake Minnieberg</span>
-            <span className="city__temperature">8 F</span>
-          </li>
-          <li className="city">
-            <span className="city__name">East Gerhardshire</span>
-            <span className="city__temperature">23 F</span>
-          </li>
+          {towns.length
+            ? towns.map(({ id, name, temperature }) => (
+                <li key={id} className="city">
+                  <span className="city__name">{name}</span>
+                  <span className="city__temperature">{`${temperature} F`}</span>
+                </li>
+              ))
+            : null}
         </ul>
       </main>
     );
