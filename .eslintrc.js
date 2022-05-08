@@ -25,6 +25,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'arrow-body-style': 1,
     'prefer-arrow-callback': 1,
+    'no-shadow': 0, // add
+    'consistent-return': 0, // add
   },
   settings: {
     'import/resolver': {
